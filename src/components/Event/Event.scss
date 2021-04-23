@@ -1,0 +1,36 @@
+@import '../../theme.scss';
+
+.Event {
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: $boxShadow;
+    transition: $transitionCubic;
+
+    &:hover {
+        box-shadow: $boxShadowHover;
+    }
+
+    &-Figure {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    &-Image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &-Title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    &-Description {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,25 @@
+@import '../../theme.scss';
+
+.Grid {
+    display: grid;
+    row-gap: 32px;
+
+    @media screen and ($mobileLarge) {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 32px;
+    }
+
+    @media screen and ($desktop) {
+        grid-template-columns: repeat(3, 1fr);
+
+        &_3 {
+            padding: 0 32px;
+        }
+    }
+
+    @media screen and ($desktopLarge) {
+        &_3 {
+            padding: 0 84px;
+        }
+    }
+}

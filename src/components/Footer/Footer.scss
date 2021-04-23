@@ -1,0 +1,20 @@
+@import '../../theme.scss';
+
+.Footer {
+    background: $darkGrey;
+    padding: 20px;
+
+    &-Copyright {
+        color: $lightGrey;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    @media screen and ($tablet) {
+        padding: 30px;
+
+        &-Copyright {
+            font-size: 14px;
+        }
+    }
+}
