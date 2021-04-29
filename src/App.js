@@ -14,7 +14,7 @@ function App() {
       <Main>
         <Route exact path="/" component={Home}/>
         <Route path="/events" component={Events}/>
-        <Route path="/event" component={Event}/>
+        <Route path="/event/:id" component={Event}/>
       </Main>
       <Footer />
     </>

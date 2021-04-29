@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import Section from '../../components/Section/Section'
-import Grid from '../../components/Grid/Grid'
+import {Grid} from '../../lib/style/generalStyles'
 import EventCard from '../../components/EventCard/EventCard'
 
 const Events = () => {
@@ -9,7 +9,7 @@ const Events = () => {
         })
 return (
     <Section title="Events">
-        <Grid columns="3">
+        <Grid columns={3}>
             <EventCard 
                 title="UX/UI design workshop"
                 location="Hodnik FOI-a"

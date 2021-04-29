@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../Button/Button'
-import { Link } from 'react-router-dom';
 import './EventCard.scss';
 
 const EventCard = ({title, location, date, company, seats, buttonText}) =>{
@@ -32,9 +31,9 @@ const EventCard = ({title, location, date, company, seats, buttonText}) =>{
         </div>
     </div>
 </div>
-<Link to="/event" style={{ textDecoration: 'none' }}>
-<Button text={buttonText}/>
-</Link>
+
+<Button route="/event" text={buttonText}/>
+
 </div>
 </>
     );
