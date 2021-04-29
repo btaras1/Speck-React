@@ -1,13 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './Button.scss';
 
 const Button = ({
-    text
+    text,
+    route
 }) => {
     return (
         
-        <button className="Button">{ text }</button>
+        <Link to= {route} className="Button">{ text }</Link>
 
     );
 }
