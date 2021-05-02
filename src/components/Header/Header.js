@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LogoImage from '../../assets/images/logo.png'
 import{
     HeaderWrapper,
@@ -11,14 +11,15 @@ import{
     HamburgerLine
 } from './HeaderStyle';
 
-const Header = () => {
+const Header = (props) => {
     return (
-        <HeaderWrapper>
+        <>
+            <HeaderWrapper>
             <Inner>
                 <LogoContainer to="/" >
                     <Logo src={LogoImage} alt="FOI logo" />
                 </LogoContainer>
-                <Hamburger>
+                <Hamburger onClick={()=>props.setHamburgerMenu()}>
                     <HamburgerLine />
                     <HamburgerLine />
                     <HamburgerLine />
@@ -29,6 +30,8 @@ const Header = () => {
                 </Nav>
             </Inner>
         </HeaderWrapper>
+</>
+
     );
 }
 

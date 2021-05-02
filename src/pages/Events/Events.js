@@ -1,65 +1,76 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Section from '../../components/Section/Section'
 import {Grid} from '../../lib/style/generalStyles'
 import EventCard from '../../components/EventCard/EventCard'
-
+import eventsMock from '../../lib/mock/events';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import {colors} from '../../lib/style/theme';
+import Loader from 'react-loader-spinner';
 const Events = () => {
+    const [eventsDefault, setEventsDefault] = useState(null);
+    const [events, setEvents] = useState(null);
+    const [input,setInput] = useState('');
     useEffect(() => {
         window.scrollTo(0, 0);
+        setTimeout(() => {
+             setEvents(eventsMock);
+            setEventsDefault(eventsMock);
+        }, 1000);
+    }, []);
+
+
+
+    const updateInput= (input) => {
+        const filtered = eventsDefault.filter(event => {
+            return event.title.toLowerCase().includes(input.toLowerCase())
         })
+        setInput(input);
+        setEvents(filtered);
+    }
 return (
     <Section title="Events">
-        <Grid columns={3}>
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            <EventCard 
-                title="UX/UI design workshop"
-                location="Hodnik FOI-a"
-                date="14.10. (9:00-16:00h)"
-                seats="15/60"
-                company="Speck"
-                buttonText="Find out more"
-            />
-            
+    {events ? (
+        <>
+        <SearchBar
+            input={input}
+            setInput={updateInput}
+            isDisabled={false}
+        />
+        <Grid columns={4}>
+            {events.map(event =>
+        <EventCard 
+            key={event.id}
+            title={event.title}
+            location={event.location}
+            date={event.dateTime}
+            seats={event.availability}
+            company={event.company}
+            buttonText="Find out more"
+            route={`/event/${event.id}`}
+                        />
+                )}           
         </Grid>
+        </>
+    )
+    :(
+        <>
+        <SearchBar
+        isDisabled={true}
+        />
+        <Loader
+        style={{    
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+        }}
+        type="TailSpin"
+        color={colors.yellow}
+        height={100}
+        width={100}
+      />
+      </>
+    )
+    }
     </Section>
 );
 }

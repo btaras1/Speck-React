@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import eventsMock from '../../lib/mock/events';
-
+import Loader from 'react-loader-spinner';
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import {Grid} from '../../lib/style/generalStyles'
 import Event from '../../components/Event/Event'
+import {colors} from '../../lib/style/theme'
 
 
 const Home = () => {
@@ -12,21 +13,22 @@ const Home = () => {
     const [events, setEvents] = useState(null);
 
     useEffect(() => {
-        setEvents(eventsMock);
+        window.scrollTo(0, 0);
+        setTimeout(() => {
+            setEvents(eventsMock);
+        }, 1000);
     }, []);
 
 
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        })
+
 
 
     return(
         <>
          <Hero />
         <Section title="Featured events" >
-        {events && 
+        {events ? (
           <Grid columns={3}>
               {events.map(event => event.isFeatured &&
           <Event 
@@ -41,6 +43,20 @@ const Home = () => {
               )
               }
           </Grid>
+        )
+        : ( 
+        <Loader
+            style={{    
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}
+            type="TailSpin"
+            color={colors.yellow}
+            height={100}
+            width={100}
+          />
+          )
           }
         </Section>
         </>
