@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Button.scss';
+import {Button as ButtonStyle} from './ButtonStyle'
 
 const Button = ({
     text,
@@ -8,8 +8,8 @@ const Button = ({
 }) => {
     return (
         
-        <Link to= {route} className="Button">{ text }</Link>
-
+        <Link style={{ textDecoration: 'none' }} to={route}><ButtonStyle>{ text }</ButtonStyle></Link>
+        
     );
 }
 

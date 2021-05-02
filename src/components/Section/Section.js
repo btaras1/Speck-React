@@ -1,17 +1,29 @@
 import React from 'react';
-import './Section.scss';
+import {
+    Section as SectionWrapper, 
+    SectionWithoutTopPadding, 
+    Title
+} from './SectionStyle';
 
 const Section = ({
     children,
     title,
     withoutTopPadding
 }) => {
-    const sectionClassName = withoutTopPadding ? 'Section Section_topPadding_none' : 'Section';
     return (
-        <section className={sectionClassName}>
-            {title && <h2 className="Section-Title">{title}</h2>}
-            { children}
-        </section>
+        <>
+        {withoutTopPadding ? (
+            <SectionWithoutTopPadding>
+                {title && <Title>{title}</Title>}
+                {children}
+            </SectionWithoutTopPadding>
+        ) : (
+            <SectionWrapper>
+                {title && <Title>{title}</Title>}
+                {children}
+            </SectionWrapper>
+        )}
+        </>
     );
 }
 export default Section;

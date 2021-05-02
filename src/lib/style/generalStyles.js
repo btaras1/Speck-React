@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {
     colors,
     breakpoints,
@@ -19,8 +19,19 @@ export const Grid = styled.div `
         }
     }    
     @media screen and (${breakpoints.desktopLarge}) {
-        ${props => props.columns === 3 && 
-            'padding: 0 84px;'
+        ${props => props.columns === 4 && css`
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1280px;
+        `
+            
         }
+        ${props => props.columns === 3 &&
+            'padding: 0 84px;'
+            
+        }
+
     }
 `;
+
+export const Main = styled.main``;
+

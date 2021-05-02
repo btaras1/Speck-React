@@ -57,6 +57,9 @@ export const NavItem = styled(NavLink)`
     }    &:last-child {
         margin-right: 0;
     }   
+    &.active {
+        color: ${colors.red};
+    }
     @media screen and (${breakpoints.desktop}) {
         display: inline-block;
         text-decoration: none;
