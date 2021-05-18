@@ -4,8 +4,7 @@ import {Grid} from '../../lib/style/generalStyles'
 import EventCard from '../../components/EventCard/EventCard'
 import eventsMock from '../../lib/mock/events';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import {colors} from '../../lib/style/theme';
-import Loader from 'react-loader-spinner';
+import DataLoader from '../../components/DataLoader/DataLoader';
 const Events = () => {
     const [eventsDefault, setEventsDefault] = useState(null);
     const [events, setEvents] = useState(null);
@@ -57,17 +56,7 @@ return (
         <SearchBar
         isDisabled={true}
         />
-        <Loader
-        style={{    
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-        }}
-        type="TailSpin"
-        color={colors.yellow}
-        height={100}
-        width={100}
-      />
+        <DataLoader />
       </>
     )
     }

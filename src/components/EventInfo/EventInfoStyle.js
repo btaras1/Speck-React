@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import {
-    colors,
+
     breakpoints,
-    transitionCubic,
-    boxShadow,
-    boxShadowHover
 } from '../../lib/style/theme';
 
 export const EventInfo = styled.div`

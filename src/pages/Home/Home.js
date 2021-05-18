@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import eventsMock from '../../lib/mock/events';
-import Loader from 'react-loader-spinner';
 import Hero from '../../components/Hero/Hero';
 import Section from '../../components/Section/Section';
 import {Grid} from '../../lib/style/generalStyles'
 import Event from '../../components/Event/Event'
-import {colors} from '../../lib/style/theme'
+import DataLoader from '../../components/DataLoader/DataLoader';
 
 
 const Home = () => {
@@ -45,17 +44,7 @@ const Home = () => {
           </Grid>
         )
         : ( 
-        <Loader
-            style={{    
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}
-            type="TailSpin"
-            color={colors.yellow}
-            height={100}
-            width={100}
-          />
+        <DataLoader />
           )
           }
         </Section>

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import {
     colors,
-    breakpoints,
-    transitionEase
+    breakpoints
 } from '../../lib/style/theme';
 
 export const Container = styled.div`
