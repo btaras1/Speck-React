@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {
     colors,
-    breakpoints,
     transitionEase
 } from '../../lib/style/theme';
 import { NavLink } from 'react-router-dom';

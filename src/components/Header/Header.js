@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import LogoImage from '../../assets/images/logo.png'
 import{
     HeaderWrapper,
@@ -27,6 +27,9 @@ const Header = (props) => {
                 <Nav>
                     <NavItem exact to="/">Home</NavItem>
                     <NavItem to="/events">Events</NavItem>
+                    <NavItem to="/login">Login</NavItem>
+                    <NavItem to="/register">Register</NavItem>
+                    <NavItem to="/admin">Admin</NavItem>
                 </Nav>
             </Inner>
         </HeaderWrapper>
