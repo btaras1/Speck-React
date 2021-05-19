@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import LogoImage from '../../assets/images/logo.png'
 import{
     HeaderWrapper,
@@ -12,7 +12,14 @@ import{
 } from './HeaderStyle';
 
 const Header = (props) => {
+    useEffect(() => {
+        console.log("Header")
+        console.log(props.isLoggedIn);
+        console.log(props.isAdmin);
+        console.log("Header");
+    }, [props.isLoggedIn])
     return (
+        
         <>
             <HeaderWrapper>
             <Inner>
@@ -27,9 +34,19 @@ const Header = (props) => {
                 <Nav>
                     <NavItem exact to="/">Home</NavItem>
                     <NavItem to="/events">Events</NavItem>
-                    <NavItem to="/login">Login</NavItem>
-                    <NavItem to="/register">Register</NavItem>
-                    <NavItem to="/admin">Admin</NavItem>
+                    {!props.isLoggedIn && 
+                        <NavItem to="/register">Register</NavItem>
+                    }
+                    {props.isAdmin &&
+                        <NavItem to="/admin">Admin</NavItem>
+                    }
+                    {props.isLoggedIn ?
+                        <NavItem to="/login" onClick={()=>{props.userLogout()}}>Logout</NavItem>
+                        :
+                        <NavItem to="/login">Login</NavItem>
+                        
+                    }
+                    
                 </Nav>
             </Inner>
         </HeaderWrapper>

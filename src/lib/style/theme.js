@@ -11,7 +11,11 @@ export const colors = {
     black: '#000000',
     darkGrey: '#333333',
     lightGrey: '#d0d0d0',
-    blackOverlay: 'rgba(0, 0, 0, 0.7)'
+    blackOverlay: 'rgba(0, 0, 0, 0.7)',
+    successBackground: 'rgba(111,207,151,0.2)',
+    errorBackground: 'rgba(235,87,87,0.2)',
+    error: '#eb5757',
+    success: '#27ae60',
 };
 export const boxShadow = '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
 export const boxShadowHover = '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)';
