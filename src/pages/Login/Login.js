@@ -16,7 +16,7 @@ import DataLoader from '../../components/DataLoader/DataLoader'
 import {loginUser} from '../../api/login'
 import {getAllUsers} from '../../api/user'
 
-const Login = ({userLogin}) => {
+const Login = ({ userLogin }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isRequestFinished, setIsRequestFinished] = useState(false);
@@ -52,8 +52,8 @@ const Login = ({userLogin}) => {
             const isAdmin = users.find(user => user.email === values.email).isAdmin;
             console.log(isAdmin);
 
-            localStorage.setItem('authToken', response.token);
-            localStorage.setItem('isAdmin', isAdmin);
+            userLogin(response.token, isAdmin);
+
             resetForm({});
             setIsLoading(false);
             setIsRequestFinished(true);
@@ -61,7 +61,6 @@ const Login = ({userLogin}) => {
             setSuccessMessage('User login successfully !');
             setTimeout(() => {
                 setIsRequestFinished(false);
-                userLogin(response.token, isAdmin);
             }, 4000);
             
         } catch (error) {

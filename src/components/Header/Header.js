@@ -11,47 +11,49 @@ import{
     HamburgerLine
 } from './HeaderStyle';
 
-const Header = (props) => {
+const Header = ({
+    isLoggedIn,
+    isAdmin,
+    setHamburgerMenu,
+    userLogout
+}) => {
     useEffect(() => {
         console.log("Header")
-        console.log(props.isLoggedIn);
-        console.log(props.isAdmin);
+        console.log(isLoggedIn);
+        console.log(isAdmin);
         console.log("Header");
-    }, [props.isLoggedIn])
-    return (
-        
+    }, [isLoggedIn, isAdmin]);
+
+    return (    
         <>
             <HeaderWrapper>
-            <Inner>
-                <LogoContainer to="/" >
-                    <Logo src={LogoImage} alt="FOI logo" />
-                </LogoContainer>
-                <Hamburger onClick={()=>props.setHamburgerMenu()}>
-                    <HamburgerLine />
-                    <HamburgerLine />
-                    <HamburgerLine />
-                </Hamburger>
-                <Nav>
-                    <NavItem exact to="/">Home</NavItem>
-                    <NavItem to="/events">Events</NavItem>
-                    {!props.isLoggedIn && 
-                        <NavItem to="/register">Register</NavItem>
-                    }
-                    {props.isAdmin &&
-                        <NavItem to="/admin">Admin</NavItem>
-                    }
-                    {props.isLoggedIn ?
-                        <NavItem to="/login" onClick={()=>{props.userLogout()}}>Logout</NavItem>
-                        :
-                        <NavItem to="/login">Login</NavItem>
-                        
-                    }
-                    
-                </Nav>
-            </Inner>
-        </HeaderWrapper>
-</>
-
+                <Inner>
+                    <LogoContainer to="/" >
+                        <Logo src={LogoImage} alt="FOI logo" />
+                    </LogoContainer>
+                    <Hamburger onClick={() => setHamburgerMenu()}>
+                        <HamburgerLine />
+                        <HamburgerLine />
+                        <HamburgerLine />
+                    </Hamburger>
+                    <Nav>
+                        <NavItem exact to="/">Home</NavItem>
+                        <NavItem to="/events">Events</NavItem>
+                        {!isLoggedIn && 
+                            <NavItem to="/register">Register</NavItem>
+                        }
+                        {isAdmin &&
+                            <NavItem to="/admin">Admin</NavItem>
+                        }
+                        {isLoggedIn ?
+                            <NavItem to="/login" onClick={()=> userLogout()}>Logout</NavItem>
+                            :
+                            <NavItem to="/login">Login</NavItem>
+                        }
+                    </Nav>
+                </Inner>
+            </HeaderWrapper>
+        </>
     );
 }
 
