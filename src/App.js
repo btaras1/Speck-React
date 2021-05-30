@@ -73,7 +73,7 @@ function App() {
             <Route path="/event/:id" component={Event}/>
             <Route path="/login" render={() => <Login userLogin={userLogin} />} />
             {/* <ProtectedRoute user='isLoggedIn' isLoggedIn={isLoggedIn}  path="/login"  userLogin={userLogin} component={Login} /> */}
-            <ProtectedRoute user='isLoggedIn' isLoggedIn={isLoggedIn} userLogin={userLogin} path="/register"  component={Register}/>
+              <ProtectedRoute user='isLoggedIn' isLoggedIn={!isLoggedIn} path="/register"  component={Register}/>
             <ProtectedRoute user='isAdmin' isAdmin={isAdmin} path="/admin" component={Admin}/>
             </Switch>
           </Main>
