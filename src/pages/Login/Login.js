@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Section from '../../components/Section/Section';
@@ -11,17 +11,18 @@ import {
     InputError,
     SuccessMessage
 } from '../../lib/style/generalStyles';
-import {Button} from '../../components/Button/ButtonStyle'
-import DataLoader from '../../components/DataLoader/DataLoader'
-import {loginUser} from '../../api/login'
-import {getAllUsers} from '../../api/user'
+import {Button} from '../../components/Button/ButtonStyle';
+import DataLoader from '../../components/DataLoader/DataLoader';
+import {loginUser} from '../../api/login';
+import {getAllUsers} from '../../api/user';
+import { AuthContext } from '../../context/AuthContext';
 
-const Login = ({ userLogin }) => {
+const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isRequestFinished, setIsRequestFinished] = useState(false);
     const [successMessage, setSuccessMessage] = useState(''); 
-
+    const { userLogin } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -41,17 +42,14 @@ const Login = ({ userLogin }) => {
         setIsLoading(true);
         setIsRequestFinished(false);
         try {
-            console.log(values);
+    
             const response = await loginUser({
                 email: values.email,
                 password: values.password
             });
             console.log(response.token);
             const users = await getAllUsers(response.token);
-            console.log(users);
             const isAdmin = users.find(user => user.email === values.email).isAdmin;
-            console.log(isAdmin);
-
             userLogin(response.token, isAdmin);
 
             resetForm({});
