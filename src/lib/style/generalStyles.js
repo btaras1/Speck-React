@@ -53,7 +53,7 @@ export const FormRow = styled.div`
 `;
 
 export const CheckboxWrapper = styled.div`
- 
+    display: flex;
     justify-content: flex-start;
 `;
 

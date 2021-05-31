@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Section from '../../components/Section/Section';
@@ -16,12 +16,14 @@ import {
 import {Button} from '../../components/Button/ButtonStyle'
 import DataLoader from '../../components/DataLoader/DataLoader'
 import {registerUser} from '../../api/register';
+import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isRequestFinished, setIsRequestFinished] = useState(false);
     const [successMessage, setSuccessMessage] = useState(''); 
+    const { userLogin } = useContext(AuthContext);
     const formik = useFormik({
         initialValues: {
             email: '',

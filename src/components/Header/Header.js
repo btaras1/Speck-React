@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useContext} from 'react';
 import LogoImage from '../../assets/images/logo.png'
 import{
     HeaderWrapper,
@@ -10,19 +10,12 @@ import{
     Hamburger,
     HamburgerLine
 } from './HeaderStyle';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = ({
-    isLoggedIn,
-    isAdmin,
-    setHamburgerMenu,
-    userLogout
+    setHamburgerMenu
 }) => {
-    useEffect(() => {
-        console.log("Header")
-        console.log(isLoggedIn);
-        console.log(isAdmin);
-        console.log("Header");
-    }, [isLoggedIn, isAdmin]);
+    const { isLoggedIn, isAdmin, userLogout } = useContext(AuthContext);
 
     return (    
         <>
